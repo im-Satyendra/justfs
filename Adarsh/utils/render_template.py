@@ -39,6 +39,6 @@ async def render_page(message_id):
         async with aiofiles.open('Adarsh/template/dl.html') as r:
             async with aiohttp.ClientSession() as s:
                 async with s.get(src) as u:
-                    file_size = human_size(u.headers.get('Content-Type'))
+                    file_size = human_size(u.headers.get('Content-Length'))
                     html = (await r.read()) % (heading, file_name, src, file_size)
     return html
